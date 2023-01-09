@@ -22,3 +22,53 @@ let square = function (value) {
 
 // 2.3 프로퍼티 접근 표현식
 // 프로퍼티 접근 표현식은 객체 프로퍼티나 배열 요소의 값으로 평가된다. 자바스크립트에는 두 가지 프로퍼티 접근 문법이 있다.
+expression.identifier;
+expression[expression];
+
+let exam = { x: 1, y: { z: 3 } };
+let example = [exam, 4, [5, 6]];
+
+console.log(exam[x]); // 1
+console.log(example[2]['1']); // 6
+console.log(exam.x); // 1
+
+// 2.3.1 조건부 프로퍼티 접근
+// ES2020에서 새로운 프로퍼티 접근 표현식 두 가지를 추가했다.
+expression?.identifier;
+expression?.[expression];
+
+// 자바스크립트에서 프로퍼티를 가질 수 없는 값은 null과 undefined 뿐이다.
+// 마침표나 대괄호를 사용하는 일반적인 프로퍼티 접근 표현식에서는 왼쪽에 있는 표현식이 null이나 undefined로 평가될 때 TypeError가 일어난다.
+// ?. 과 ?.[] 문법을 사용하여 이런 에러를 막을 수 있다. 먼저, a?.b라는 표현식에 대해 알아보자.
+// a가 null 이거나 undefined 라면 이 표현식은 프로퍼티 b에 접근하려는 시도 없이 undefined로 평가된다.
+// a가 다른 값이라면 a?.b는 a.b처럼 평가된다.
+// 이런 형태의 프로퍼티 접근 표현식을 때때로 '옵션 체인'이라고 부른다.
+
+let a = { b: null };
+a.b?.c.d; // undefined
+
+// 2.4 기타 연산자
+// 2.4.1 조건 연산자 (?:)
+// 조건 연산자는 자바스크립트에서 유일한 3항 연산자이며, 실제로 3항 연산자라고 불리기도 한다.
+// 이 연산자는 ?:로 표기하긴 하지만, 이 형태를 그대로 사용하진 않는다.
+
+x > 0 ? x : -x;
+
+// 조건 연산자는 피연산자 타입을 가리지 않는다.
+// 첫 번째 피연산자는 Boolean으로 평가하고 해석한다. 첫 번째 피연산자의 값이 true 값이면 두 번째 피연산자를 평가하고 그 값을 반환한다.
+// 그렇지 않다면, 세 번째 피연산자를 평가하고 그 값을 반환한다.
+
+greeting = 'Hello' + (userName ? userName : 'there');
+
+greeting = 'Hello';
+if (userName) {
+    greeting += userName;
+} else {
+    greeting += 'there';
+}
+
+// 2.4.2 null 병합 연산자 (??)
+// null 병합 연산자 ?? 는 정의된 첫 번째 피연산자로 평가된다.
+// 왼쪽 피연산자가 null 이나 undefined가 아니면 그 값을 반환한다. 그렇지 않으면 오른쪽 피연산자의 값을 반환한다.
+// 즉, 아래 코드와 같은 의미이다.
+a !== null && a !== undefined ? a : b;
