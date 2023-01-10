@@ -41,3 +41,20 @@ object.property;
 object['property'];
 
 // 위 두 표현식은 같은 값을 가진다.
+
+// 4.3 객체 확장
+// 자바스크립트 프로그램에서 객체의 프로퍼티를 다른 객체에 복사하는 것은 흔한 일이다.
+
+let target = { x: 1 };
+let source = { y: 2, z: 3 };
+
+for (let key in Object.keys(source)) {
+    target[key] = source[key];
+}
+
+console.log(target); // {x: 1, y: 2, z: 3}
+
+// Object.assign()은 인자로 두 개 이상의 객체를 받는다.
+// 첫 번째 인자는 수정해서 반환할 대상 객체이지만, 두 번째 또는 그 이후의 인자는 소스 객체이므로 수정하지 않는다.
+
+// 4.4 객체 직렬화
