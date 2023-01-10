@@ -64,3 +64,11 @@ JSON.stringify();
 JSON.parse();
 
 // 위 두 함수는 자바스크립트 객체를 직렬화하고 되돌리는 함수이다.
+
+// 4.4 분해 연산자
+// ES2018 이후에는 객체 리터럴 안에서 분해 연산자 ...를 사용해 기존 객체의 프로퍼티를 새 객체에 복사할 수 있다.
+let position = { x: 0, y: 0 };
+let dimensions = { width: 100, height: 75 };
+let rect = { ...position, ...dimensions };
+
+// ... 분해 연산자는 객체 리터럴 안에서만 사용할 수 있는 특별 문법이다.
