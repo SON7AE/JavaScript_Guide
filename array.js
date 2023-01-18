@@ -141,3 +141,13 @@ a.map((value) => {
 
 // 5.7.3 filter
 // filter() 메서드는 기존 배열의 일부만 포함하는 부분 집합을 반환한다.
+// 전달하는 함수를 기준ㄴ으로 하며 이 함수는 true 또는 false를 반환한다.
+// 함수 호출은 forEach()나 map()과 마찬가지이다.
+// 반환 값이 true이거나 true로 변환될 수 있는 값이면, 해당 요소는 반환되는 배열에 포함된다.
+
+// filter()는 성긴 배열에서 존재하지 않는 값은 건너뛰며, 반환하는 배열은 항상 빽빽한 배열이다.
+// 다음과 같이 성긴 배열에서 갭을 제거할 수 있다.
+let dense = sparse.filter(() => true);
+
+// 다음과 같이 filter()를 써서 갭과 함께 undefined, null 요소도 제거할 수 있다.
+a = a.filter((x) => x !== undefined && x !== null);
