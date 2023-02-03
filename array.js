@@ -175,3 +175,15 @@ a.every((x) => x % 2 === 0) // false : 짝수가 아닌 값이 있다.
 let a = [1, 2, 3, 4, 5]
 a.some((x) => x % 2 === 0) // => true : a에는 짝수가 있다.
 a.some(isNaN) // => false : a에 NaN은 없다.
+
+// every()와 some()은 자신이 어떤 값을 반환할지 확실해지는 순간 순회를 멈춘다.
+// some()은 판별 함수가 true를 반환하는 즉시 true를 반환하므로 (마지막 요소를 제외한) 모든 요소가 false를 반환할 때만 배열 전체를 순회한다.
+// every()는 반대로 판별 함수가 false를 반환하는 즉시 false를 반환하므로 (마지막 요소를 제외한) 모든 요소가 true를 반환할 때만 배열 전체를 순회한다.
+// 또한, 수학적인 관습에 따라 빈 배열에 호출했을 때 every()는 true를 반환하고 some()은 false를 반환한다.
+
+// 5.7.6 reduce()와 reduceRight()
+// reduce()와 reduceRight() 메서드는 제공하는 함수를 사용해 배열 요소를 값 하나로 만든다.
+let a = [1, 2, 3, 4, 5]
+a.reduce((x, y) => x + y, 0) // => 15 : 값의 합계
+a.reduce((x, y) => x * y, 1) // => 120 : 값의 곱
+a.reduce((x, y) => (x > y ? x : y)) // => 5 : 가장 큰 값
